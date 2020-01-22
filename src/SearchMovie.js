@@ -10,7 +10,7 @@ class SearchMovie extends Component {
   componentDidMount() {
     const param = this.props.history.location.state.param;
     this.setState({ loading: true });
-    axios(`http://www.omdbapi.com/?apikey=3fe2ee61&s=${param}`)
+    axios(`http://www.omdbapi.com/?apikey=88d04ebd&s=${param}`)
       .then(res => {
         console.log(res.data.Search);
         this.setState({ pictures: res.data.Search, loading: false });

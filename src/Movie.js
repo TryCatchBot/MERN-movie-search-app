@@ -12,14 +12,12 @@ class Movie extends Component {
 
   componentDidMount() {
     this.setState({ loading: true });
-    fetch("http://www.omdbapi.com/?i=tt3896198&apikey=3fe2ee61")
+    fetch("http://www.omdbapi.com/?i=tt3896198&apikey=88d04ebd")
       .then(results => results.json())
       .then(res => {
-        // console.log("res console", res);
         this.setState({ pictures: res, loading: false });
       })
       .catch(err => {
-        // console.log("catch console", err);
         this.setState({ error: err.data, loading: false });
       });
   }
@@ -31,22 +29,20 @@ class Movie extends Component {
         {loading ? (
           <p>Loading...</p>
         ) : (
-          <div className="container2">
-            <div className="container1">
-              {pictures ? (
-                /* pictures.map((pic, index) => { */
-                /* return ( */
-                <div className="bg-light-green dib br3 ma2 grow bw2 shadow-5">
-                  <img alt="unable to load" src={pictures.Poster} />
-                  <p className="tc">{pictures.Title}</p>
-                  {/* <p className="tc">{pictures.Plot}</p> */}
-                </div>
-              ) : (
-                <div>{error && "Error loading picture"}</div>
-              )}
+            <div className="container2">
+              <div className="container1">
+                {pictures ? (
+                  <div className="dib br4 ma3 dim ba">
+                    <img alt="unable to load" src={pictures.Poster} />
+                    <p className="tc">{pictures.Title}</p>
+                    {}
+                  </div>
+                ) : (
+                    <div>{error && "Error loading picture"}</div>
+                  )}
+              </div>
             </div>
-          </div>
-        )}
+          )}
       </div>
     );
   }
